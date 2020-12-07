@@ -187,7 +187,8 @@
 <style>
   .login {
     min-height: 100%;
-    background: #f1f1f1;
+    /* background: #f1f1f1; */
+    background: linear-gradient(to right, #009fff, #ec2f4b);
     text-align: center;
     padding: 20px 0;
     box-sizing: border-box;

@@ -1,7 +1,7 @@
 <template>
 	<div class="left-nav">
 		<div class="left-search">
-			<el-input placeholder="blog search" suffix-icon="el-icon-search"></el-input>
+			<el-input placeholder="技术文章搜索" v-model="searchAc"  suffix-icon="el-icon-search"></el-input>
 		</div>
 		<div class="btn-show">
 			<!-- <i class="el-icon-caret-right" @click="showPanel"></i> -->
@@ -21,16 +21,16 @@
 		</div>
 		<div class="left-menu">
 			<el-menu class="tabs-menu" background-color="#324157" active-text-color="#ffd04b" router default-active="blog">
-				<el-menu-item index="/"><i class="iconfont icon-wenzhang"></i><span>Home</span></el-menu-item>
-				<el-menu-item index="blog"><i class="iconfont icon-wenzhang"></i><span>Blog</span></el-menu-item>
-				<el-menu-item index="about"><i class="iconfont icon-about"></i><span>About</span></el-menu-item>
-				<el-menu-item index="comment"><i class="iconfont icon-comments"></i><span>Comment</span></el-menu-item>
-				<el-menu-item index="contact"><i class="iconfont icon-icon3"></i><span>Contact</span></el-menu-item>
+				<el-menu-item index="/"><i class="iconfont icon-wenzhang"></i><span>首页</span></el-menu-item>
+				<el-menu-item index="blog"><i class="iconfont icon-wenzhang"></i><span>技术文章</span></el-menu-item>
+				<el-menu-item index="about"><i class="iconfont icon-about"></i><span>关于</span></el-menu-item>
+				<el-menu-item index="comment"><i class="iconfont icon-comments"></i><span>评论</span></el-menu-item>
+				<el-menu-item index="contact"><i class="iconfont icon-icon3"></i><span>联系我</span></el-menu-item>
 			</el-menu>
 		</div>
 		<div class="left-social">
-			<a href="https://github.com/Moon-Future" target="_blank"><i class="iconfont icon-github"></i></a>
-			<a href="http://weibo.com/1768475582/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank"><i class="iconfont icon-weibo"></i></a>
+			<a href="https://github.com/hezhilong5211/blog" target="_blank"><i class="iconfont icon-github"></i></a>
+			<a href="http://weibo.com/1176090144/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank"><i class="iconfont icon-weibo"></i></a>
 			<a href="javascript:;"><i class="iconfont icon-weixin"></i></a>
 		</div>
 	</div>
@@ -42,6 +42,8 @@
 		data() {
 			return {
 				avatarRoot: '../../../static/images/avatar/',
+				//技术文章搜索参数
+				searchAc:''
 			}
 		},
 		computed: {
