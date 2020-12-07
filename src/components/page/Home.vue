@@ -19,7 +19,6 @@
     </div>
     <div class="area">
       <div class="area-left"></div>
-      <div class="area-right"></div>
     </div>
   </div>
 </template>
@@ -143,7 +142,8 @@
     position: absolute;
     width: 100px;
     height: 100px;
-    background: #f52323;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    /* background: #f52323; */
   }
 
   .heart img {
@@ -171,14 +171,14 @@
   }
 
   .area-left, .area-right {
-    width: 50%;
+    width: 100%;
     height: 100%;
     position: relative;
     display: block;
     float: left;
   }
   .area-left {
-    background-color: #fab27b; 
+    background: linear-gradient(to right, #009fff, #ec2f4b);
   }
   .area-right {
     background-color: #cde6c7; 
