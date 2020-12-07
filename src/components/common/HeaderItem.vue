@@ -5,7 +5,7 @@
       <div class="clearfix">
         <div class="m-avatar">
           <img :src="getAvatar" alt="headPice" class="left-avatar" @click="gotoAdmin" />
-          <p>我的博客我的博客我的博客我的博客</p>
+          <p>hezhilong-blog</p>
         </div>
         <div class="md-menu">
           <el-menu mode="horizontal">
