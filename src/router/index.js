@@ -6,6 +6,8 @@ import Home from '@/components/page/Home'
 Vue.use(Router)
 
 export default new Router({
+  //启用history路由模式 消除/#/
+  mode:"history",
   routes: [
     {
       path: '/HelloWorld',
