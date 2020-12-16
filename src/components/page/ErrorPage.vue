@@ -8,7 +8,7 @@
         <h2>404</h2>
         <h3>SORRY</h3>
         <p>The Page You're Looking for Was Not Found.</p>
-        <router-link to="/">go back</router-link>
+        <router-link to="/admin">go back</router-link>
       </div>
     </div>
   </div>

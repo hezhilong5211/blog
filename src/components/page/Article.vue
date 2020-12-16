@@ -134,6 +134,7 @@
     padding: 20px;
     background: #fff;
     text-align: left;
+    cursor: pointer;
   }
   .article-title {
     text-align: center
@@ -141,6 +142,7 @@
   .article-mes {
     height: 60px;
     line-height: 30px;
+    cursor: pointer;
   }
 
   .article-title span {

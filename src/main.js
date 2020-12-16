@@ -44,11 +44,11 @@ Date.prototype.format = function(format) {
   }
   return format;
 }
-
+//全局路由导航守卫
 router.beforeEach ((to, from, next) => {
   const toData = to.params;
   const fromData = from.params;
-
+   //控制刷新页面时始终位于left菜单栏的第一项
   if (to.name === from.name && to.query.id !== from.query.id) {
     router.go(0);
   }

@@ -22,7 +22,7 @@
       title="提示：email用户已存在如下信息"
       :visible.sync="dialogVisible">
       <span>
-        <p><strong>大名：</strong>{{ oriName }}</p>
+        <p><strong>名字：</strong>{{ oriName }}</p>
         <p><strong>个人网站：</strong>{{ oriWebsite }}</p>
         <p><el-checkbox v-model="oriReminder" :disabled="true">收到回复邮件提醒</el-checkbox></p>
       </span>
