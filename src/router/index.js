@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/page/Home'
+import About from '@/components/page/About'
 
 Vue.use(Router)
 
@@ -42,9 +43,9 @@ export default new Router({
       ]
     },
     {
-      path: 'about',
+      path: '/about',
       name: 'About',
-      component: resolve => require(['@/components/page/About'], resolve)
+      component: About
     },
     {
         path: 'contact',
