@@ -1,0 +1,53 @@
+<p>// 设置默认溢出显示数量
+var spillDataNum = 20;</p>
+<p>// 设置隐藏函数
+var timeout = false;
+let setRowDisableNone = function (topNum, showRowNum, binding) {
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+  timeout = requestAnimationFrame(() =&gt; {
+    binding.value.call(null, topNum, topNum + showRowNum + spillDataNum);
+  });
+};</p>
+<p>export default {
+  name: &#39;loadmore&#39;,
+  componentUpdated: function (el, binding, vnode, oldVnode) {
+    requestAnimationFrame(() =&gt; {
+      const dataSize = vnode.data.attrs[&#39;data-size&#39;];
+      const oldDataSize = oldVnode.data.attrs[&#39;data-size&#39;];
+      if(dataSize === oldDataSize){
+        return;
+      }
+      const selectWrap = el.querySelector(&#39;.el-table__body-wrapper&#39;);
+      const selectTbody = selectWrap.querySelector(&#39;table tbody&#39;);
+      const selectRow = selectWrap.querySelector(&#39;table tr&#39;);
+      if (!selectRow) {
+        return;
+      }
+      const rowHeight = selectRow.clientHeight;
+      let showRowNum = Math.round(selectWrap.clientHeight / rowHeight);</p>
+<pre><code>  const createElementTR = document.create<span class="hljs-constructor">Element('<span class="hljs-params">tr</span>')</span>;
+  <span class="hljs-keyword">let</span> createElementTRHeight = (dataSize - showRowNum - spillDataNum)<span class="hljs-operator"> * </span>rowHeight;
+  createElementTR.set<span class="hljs-constructor">Attribute('<span class="hljs-params">style</span>', `<span class="hljs-params">height</span>: ${<span class="hljs-params">createElementTRHeight</span>}<span class="hljs-params">px</span>;`)</span>;
+  selectTbody.append(createElementTR);
+
+  <span class="hljs-comment">// 监听滚动后事件</span>
+  selectWrap.add<span class="hljs-constructor">EventListener('<span class="hljs-params">scroll</span>', <span class="hljs-params">function</span> ()</span> {
+    <span class="hljs-keyword">let</span> topPx = this.scrollTop - spillDataNum<span class="hljs-operator"> * </span>rowHeight;
+    <span class="hljs-keyword">let</span> topNum = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Math</span>.</span></span>round(topPx<span class="hljs-operator"> / </span>rowHeight);
+    <span class="hljs-keyword">let</span> minTopNum = dataSize - spillDataNum - showRowNum;
+    <span class="hljs-keyword">if</span> (topNum &gt; minTopNum) {
+      topNum = minTopNum;
+    }
+    <span class="hljs-keyword">if</span> (topNum &lt; <span class="hljs-number">0</span>) {
+      topNum = <span class="hljs-number">0</span>;
+      topPx = <span class="hljs-number">0</span>;
+    }
+    selectTbody.set<span class="hljs-constructor">Attribute('<span class="hljs-params">style</span>', `<span class="hljs-params">transform</span>: <span class="hljs-params">translateY</span>(${<span class="hljs-params">topPx</span>}<span class="hljs-params">px</span>)</span>`);
+    <span class="hljs-comment">// selectTbody.setAttribute('style', `transform: .2s`);</span>
+    createElementTR.set<span class="hljs-constructor">Attribute('<span class="hljs-params">style</span>', `<span class="hljs-params">height</span>: ${<span class="hljs-params">createElementTRHeight</span>-<span class="hljs-params">topPx</span> &gt; 0 ? <span class="hljs-params">createElementTRHeight</span>-<span class="hljs-params">topPx</span> : 0}<span class="hljs-params">px</span>;`)</span>;
+    set<span class="hljs-constructor">RowDisableNone(<span class="hljs-params">topNum</span>, <span class="hljs-params">showRowNum</span>, <span class="hljs-params">binding</span>)</span>;
+  })
+});</code></pre><p>  }
+};</p>
