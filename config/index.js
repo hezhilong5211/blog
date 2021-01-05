@@ -10,10 +10,12 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    //vue 的反向代理
     proxyTable: {
       '/api': {
         target: 'http://localhost:3000/api',
         changeOrigin: true,
+        //告诉node后台  我只要/api开头的接口哦
         pathRewrite: {
             '^/api': ''
           }

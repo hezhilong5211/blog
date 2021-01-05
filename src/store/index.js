@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import actions from './action'
 import mutations from './mutation'
-
+//挂载Vuex
 Vue.use(Vuex);
 
 const state = {

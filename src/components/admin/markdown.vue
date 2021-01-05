@@ -164,6 +164,9 @@
   }
   .title {
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .title input {
     border: none;
@@ -195,5 +198,11 @@
   }
   .input-new-tag {
      max-width: 77px;
+  }
+  .submit{
+    width: 100%;
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
   }
 </style>
