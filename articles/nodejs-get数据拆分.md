@@ -1,0 +1,9 @@
+	querystring模块
+	querystring.parse(get数据)
+	将get数据转换成josn数据
+	url模块（推荐）
+	url.parse(地址,选项)
+	将http地址完全解析
+	选项：
+	true：解析query数据
+	false：不进行query解析

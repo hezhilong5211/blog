@@ -1,0 +1,15 @@
+<pre><code><span class="hljs-comment">//模拟双击事件(双击事件dblclick不支持)</span>
+var touchtime = <span class="hljs-number">0</span>;
+map.add<span class="hljs-constructor">EventListener(<span class="hljs-string">"touchend"</span>, <span class="hljs-params">function</span>(<span class="hljs-params">e</span>)</span> { <span class="hljs-comment">//touchend触摸结束时触发此事件</span>
+<span class="hljs-keyword">if</span>(<span class="hljs-number">0</span><span class="hljs-operator"> == </span>touchtime) {
+touchtime = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Date()</span>.get<span class="hljs-constructor">Time()</span>;
+} <span class="hljs-keyword">else</span> {
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">new</span> <span class="hljs-constructor">Date()</span>.get<span class="hljs-constructor">Time()</span> - touchtime &lt; <span class="hljs-number">800</span>) {
+search<span class="hljs-constructor">Nearby(<span class="hljs-params">e</span>)</span>;
+} <span class="hljs-keyword">else</span> {
+<span class="hljs-comment">//如果第二次点击在第一次点击0.8秒后，</span>
+<span class="hljs-comment">//则第二次点击默认为下一次双击判断的第一次点击</span>
+touchtime = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Date()</span>.get<span class="hljs-constructor">Time()</span>;
+}
+}
+});</code></pre>

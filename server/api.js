@@ -24,7 +24,6 @@ const pool = mysql.createPool({
   port: mysqlConf.mysql.port,
   multipleStatements: true    // 多语句查询
 });
-console.log(pool)
 marked.setOptions({
   highlight: function (code) {
     return require('highlight.js').highlightAuto(code).value;
@@ -332,7 +331,7 @@ module.exports = {
             sql = sql[sql.length - 2] === ',' ? sql.substr(0, sql.length - 2) : sql;
             fs.writeFileSync(filePath, content);
             res.json({status: true, msg: '提交成功'});
-            if (transporter && req.session.userData.root !== 1) {
+            if (transporter && req.session.userData.root !== 1 ) {
               mailOptions.html = '<h1>' + sendMsg.newArticle + '<h1>'
                 + '<p>' + sendMsg.title + ': ' + title + '</p>'
                 + '<p>' + sendMsg.content + ': ' + markedHtml + '</p>';

@@ -1,0 +1,16 @@
+	读取文件
+	readFile(文件名，回调函数)
+	文件名：路径
+	回调函数：function(err,data){}
+	err：错误汇报
+	data：读取信息
+	写文件
+	writeFile(文件名，写入的数据，回调函数)
+	文件名：文件路径
+	写入数据：写入的数据
+	回调函数：function(err){}
+	err：写入错误。
+	修改文件名
+	rename(原文件名,新文件名,回调函数);
+	回调函数：function(err){}
+	err：返回错误。

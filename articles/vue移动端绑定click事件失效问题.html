@@ -1,0 +1,5 @@
+<pre><code>原因可能是你使用了better-scroll，默认它会阻止touch事件。所以在配置中需要加上click: <span class="hljs-keyword">true</span>
+例：
+mounted(){
+this.scroll=<span class="hljs-built_in">new</span> Bscroll(this.$refs.<span class="hljs-keyword">wrapper</span>, { mouseWheel: <span class="hljs-keyword">true</span>, click: <span class="hljs-keyword">true</span>, tap: <span class="hljs-keyword">true</span> })
+}</code></pre>
