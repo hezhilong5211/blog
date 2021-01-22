@@ -1,0 +1,62 @@
+<pre><code>根据业务需求需要规定props传递的数据有固定的的类型
+Person.propTypes = {
+    <span class="hljs-attribute">name</span>:PropTypes<span class="hljs-variable">.string</span><span class="hljs-variable">.isRequired</span>,限制name为字符串，并且必须有数据
+    age:PropTypes<span class="hljs-variable">.number</span>
+    speak:PropTypes<span class="hljs-variable">.func</span> 限制speak为函数
+}
+可以规定prop默认的数据属性值
+Person<span class="hljs-variable">.defaultProps</span> = {
+    age:18
+}
+MyComponent<span class="hljs-variable">.propTypes</span> = {
+// 可以声明 prop 为指定的 JS 基本数据类型，默认情况，这些数据是可选的
+     optionalArray: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.array</span>,
+optionalBool: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.bool</span>,
+optionalFunc: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.func</span>,
+optionalNumber: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.number</span>,
+optionalObject: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.object</span>,
+optionalString: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.string</span>,
+
+// 可以被渲染的对象 numbers, strings, elements 或 array
+optionalNode: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.node</span>,
+
+//  React 元素
+optionalElement: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.element</span>,
+
+// 用 JS 的 instanceof 操作符声明 prop 为类的实例。
+optionalMessage: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.instanceOf</span>(Message),
+
+// 用 enum 来限制 prop 只接受指定的值。
+optionalEnum: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.oneOf</span>(['News', 'Photos']),
+
+// 可以是多个对象类型中的一个
+optionalUnion: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.oneOfType</span>([
+  React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.string</span>,
+  React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.number</span>,
+  React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.instanceOf</span>(Message)
+]),
+
+// 指定类型组成的数组
+optionalArrayOf: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.arrayOf</span>(React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.number</span>),
+
+// 指定类型的属性构成的对象
+optionalObjectOf: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.objectOf</span>(React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.number</span>),
+
+// 特定 shape 参数的对象
+optionalObjectWithShape: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.shape</span>({
+  color: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.string</span>,
+  fontSize: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.number</span>
+}),
+
+// 任意类型加上 `isRequired` 来使 prop 不可空。
+requiredFunc: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.func</span><span class="hljs-variable">.isRequired</span>,
+
+// 不可空的任意类型
+requiredAny: React<span class="hljs-variable">.PropTypes</span><span class="hljs-variable">.any</span><span class="hljs-variable">.isRequired</span>,
+
+// 自定义验证器。如果验证失败需要返回一个 Error 对象。不要直接使用 `console<span class="hljs-variable">.warn</span>` 或抛异常，因为这样 `oneOfType` 会失效。
+customProp: function(props, propName, componentName) {
+  if (!/matchme/<span class="hljs-variable">.test</span>(props[propName])) {
+    return new Error('Validation failed!');
+  }
+}</code></pre>

@@ -8,7 +8,7 @@
       </div>
       <div class="blog-nav">
         <ul>
-          <li><router-link to="/blog">博客</router-link></li>
+          <li><router-link to="/blog">小何</router-link></li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,52 @@
+<pre><code>把接收多个参数的函数变换成接收一个单一参数的函数（单一参数为多个参数中的第一个）函数柯里化思想：一个JS预处理的思想，降低通用性，提高适用性
+参数复用    需要输入多个参数，最终只需输入一个，其余通过<span class="hljs-built_in">arguments</span>来获取
+提前返回    避免重复去判断某一条件是否符合，不符合则<span class="hljs-keyword">return</span> 不再继续执行下面的操作
+延迟执行    避免重复的去执行程序，等真正需要结果的时候再执行
+利用函数执行可以形成一个不销毁的私有作用域，把预先处理的内容都存在这个不销毁的作用域里面，并且返回一个小函数，以后要执行的就是这个小函数
+例如：<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a</span>)</span>{
+     <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">another</span>(<span class="hljs-params">b</span>)</span>{
+         <span class="hljs-keyword">return</span> a+b;
+     }
+ }
+那么怎么调用该函数呢？
+sum（a）(b)
+实际应用
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Login</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>{
+        <span class="hljs-comment">//初始化状态</span>
+        state = {
+            <span class="hljs-attr">username</span>:<span class="hljs-string">''</span>, <span class="hljs-comment">//用户名</span>
+            <span class="hljs-attr">password</span>:<span class="hljs-string">''</span> <span class="hljs-comment">//密码</span>
+        }
+
+        <span class="hljs-comment">//保存表单数据到状态中</span>
+        saveFormData = <span class="hljs-function">(<span class="hljs-params">dataType</span>)=&gt;</span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">event</span>)=&gt;</span>{
+                <span class="hljs-keyword">this</span>.setState({[dataType]:event.target.value})
+            }
+        }
+
+        <span class="hljs-comment">//表单提交的回调</span>
+        handleSubmit = <span class="hljs-function">(<span class="hljs-params">event</span>)=&gt;</span>{
+            event.preventDefault() <span class="hljs-comment">//阻止表单提交</span>
+            <span class="hljs-keyword">const</span> {username,password} = <span class="hljs-keyword">this</span>.state
+            alert(<span class="hljs-string">`你输入的用户名是：<span class="hljs-subst">${username}</span>,你输入的密码是：<span class="hljs-subst">${password}</span>`</span>)
+        }
+        render(){
+            <span class="hljs-keyword">return</span>(
+                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{this.handleSubmit}</span>&gt;</span>
+                    用户名：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.saveFormData(</span>'<span class="hljs-attr">username</span>')} <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span>/&gt;</span>
+                    密码：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.saveFormData(</span>'<span class="hljs-attr">password</span>')} <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+            )
+        }
+    }
+    <span class="hljs-comment">//渲染组件</span>
+    ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Login</span>/&gt;</span></span>,<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'test'</span>))
+
+    高阶函数：如果一个函数符合下面<span class="hljs-number">2</span>个规范中的任何一个，那该函数就是高阶函数。
+                                <span class="hljs-number">1.</span>若A函数，接收的参数是一个函数，那么A就可以称之为高阶函数。
+                                <span class="hljs-number">2.</span>若A函数，调用的返回值依然是一个函数，那么A就可以称之为高阶函数。
+                                常见的高阶函数有：<span class="hljs-built_in">Promise</span>、setTimeout、arr.map()等等
+
+                函数的柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式。 </code></pre>
